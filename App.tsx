@@ -19,6 +19,6 @@ const styles = StyleSheet.create({
   appContainer:{
     // borderColor: "red",
     // borderWidth: 2,
-    padding: 10
+    padding: 20
   }
 });
