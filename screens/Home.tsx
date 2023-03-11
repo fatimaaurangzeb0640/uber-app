@@ -12,11 +12,14 @@ import {GOOGLE_MAPS_API_KEY} from "@env"
 import { useDispatch } from "react-redux";
 import { setDestination, setOrigin } from "../slices/navSlice";
 
+
 export type Props = StackScreenProps<RootStackParamList, "Home">
 
 
 const Home = () => {
     const dispatch = useDispatch()
+  
+
     return(
         <SafeAreaView style={styles.container}>
             <View>
@@ -25,8 +28,8 @@ const Home = () => {
                     placeholder='Where from?'
                     onPress={(data, details = null) => {
                         // 'details' is provided when fetchDetails = true
-                        console.log(data);
-                        console.log(details);
+                        // console.log(data);
+                        // console.log(details);
                         dispatch(setOrigin({
                             location: {
                                 lat: details?.geometry.location.lat,

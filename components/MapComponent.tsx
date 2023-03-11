@@ -1,11 +1,17 @@
 import React, {FunctionComponent} from "react";
-import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
+import { StyleSheet, View } from "react-native";
 
+import MapView, {Marker} from 'react-native-maps';
 
-import MapView from 'react-native-maps';
+import { useSelector } from "react-redux";
+import { selectOrigin } from "../slices/navSlice";
+// import { Marker } from "react-native-maps";
 
 
 const MapComponent: FunctionComponent = () => {
+
+    const origin = useSelector(selectOrigin)
+    console.log(origin)
    
     return(
       
@@ -13,12 +19,27 @@ const MapComponent: FunctionComponent = () => {
                 <MapView
                 style={styles.map}
                 initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
+                latitude: origin.location.lat,
+                longitude: origin.location.lng,
+                latitudeDelta: 0.005,
+                longitudeDelta: 0.005,
                 }}
-            />
+                mapType="mutedStandard"
+            >
+                    {
+                    origin.location &&
+                    <Marker coordinate={{
+                        latitude: origin.location.lat,
+                        longitude: origin.location.lng,
+                    }}
+                    title="Origin"
+                    description={origin.description}
+                    identifier="origin"
+                    
+                    />
+                }
+                </MapView>
+            
             </View>
        
     )

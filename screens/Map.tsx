@@ -6,17 +6,21 @@ import { RootStackParamList } from "../navigators/RootStack"
 import { StackScreenProps } from "@react-navigation/stack" 
 import MapComponent from "../components/MapComponent";
 
-type Props = StackScreenProps<RootStackParamList, "MapScreen">
+import MapStack from "../navigators/MapStack";
+import { MapStackParamList } from "../navigators/MapStack";
 
-const MapScreen: FunctionComponent<Props> = ({route}) => {
-    console.log(route)
+// export type Props = StackScreenProps<RootStackParamList, "MapScreen">
+export type Props = StackScreenProps<MapStackParamList, "NavigateCard">
+
+const MapScreen = () => {
+   
     return(
         <SafeAreaView style={styles.container}>
             <View style={styles.half}>
                 <MapComponent/>
             </View>
             <View style={styles.half}>
-                <Text>Something comes here!</Text>
+                <MapStack/>
             </View>
         </SafeAreaView>
     )

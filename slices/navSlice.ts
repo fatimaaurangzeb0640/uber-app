@@ -32,8 +32,8 @@ export const {
 } = navSlice.actions
 
 // Selectors
-export const selectOrigin = (state: any) => state.origin
-export const selectDestination = (state: any) => state.destination
-export const selectTravelTimeInformation = (state: any) => state.travelTimeInformation
+export const selectOrigin = (state: any) => state.nav.origin
+export const selectDestination = (state: any) => state.nav.destination
+export const selectTravelTimeInformation = (state: any) => state.nav.travelTimeInformation
 
 export default navSlice.reducer

@@ -5,6 +5,10 @@ import { Icon } from "react-native-elements"
 import {useNavigation} from "@react-navigation/native"
 import {Props as HomeProps} from "../screens/Home"
 
+//redux 
+import { useSelector } from "react-redux";
+import { selectOrigin } from "../slices/navSlice";
+
 const data =[
     {
         id: 123,
@@ -24,6 +28,8 @@ const NavOptions = () => {
 
     const navigation = useNavigation<HomeProps["navigation"]>()
 
+    const origin = useSelector(selectOrigin)
+
     const handlePress = () =>{
         navigation.navigate("MapScreen")
     }
@@ -35,7 +41,7 @@ const NavOptions = () => {
             keyExtractor={(item: any) => item.id}
             horizontal
             renderItem={({item}: any) =>  
-            <TouchableOpacity style={styles.listItem} onPress={handlePress}>
+            <TouchableOpacity style={ origin? styles.listItem: [styles.listItem, {opacity: 0.5}  ] }onPress={handlePress} disabled={!origin}>
                 <Image style={styles.icon} source={{uri: item.image}} />
                 <Text style={styles.text}>{item.title}</Text>
                 <Icon name="arrowright" color="white" type="antdesign" style={styles.arrowRight}/>
@@ -62,7 +68,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#E0E0E0",
         height: 200,
         marginRight: 10,
-        padding: 5
+        padding: 5,
     },
     text:{
         fontWeight: "bold",
