@@ -1,8 +1,6 @@
-import React, {FunctionComponent} from "react";
+import React from "react";
 import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
 
-
-import { RootStackParamList } from "../navigators/RootStack"
 import { StackScreenProps } from "@react-navigation/stack" 
 import MapComponent from "../components/MapComponent";
 
@@ -17,10 +15,10 @@ const MapScreen = () => {
     return(
         <SafeAreaView style={styles.container}>
             <View style={styles.half}>
-                <MapComponent/>
+                <MapStack/>   
             </View>
             <View style={styles.half}>
-                <MapStack/>
+                <MapComponent/>
             </View>
         </SafeAreaView>
     )
