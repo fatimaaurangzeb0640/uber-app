@@ -1,5 +1,6 @@
 import React, {FunctionComponent} from "react";
-import {StyleSheet} from "react-native"
+import {Platform, StyleSheet} from "react-native"
+import { KeyboardAvoidingView } from "react-native";
 
 import Home from "../screens/Home";
 import MapScreen from "../screens/Map";
@@ -24,15 +25,17 @@ const RootStack : FunctionComponent = () =>{
     return (
        
         <NavigationContainer > 
-            <Stack.Navigator initialRouteName= "Home" screenOptions={{
-            }}>
-               <Stack.Screen name="Home" component={Home} options={{headerShown:false}}/>
-                <Stack.Screen
-                    name="MapScreen" 
-                    component={MapScreen} 
-                    options={{headerShown:false}} 
-                />
-            </Stack.Navigator>
+            <KeyboardAvoidingView style={{flex: 1}} behavior={Platform.OS === "ios" ?"padding": "height"} keyboardVerticalOffset={Platform.OS === "ios" ? -64: 0 }>
+                <Stack.Navigator initialRouteName= "Home" screenOptions={{
+                }}>
+                <Stack.Screen name="Home" component={Home} options={{headerShown:false}}/>
+                    <Stack.Screen
+                        name="MapScreen" 
+                        component={MapScreen} 
+                        options={{headerShown:false}} 
+                    />
+                </Stack.Navigator>
+            </KeyboardAvoidingView>
         </NavigationContainer>
          
     )}

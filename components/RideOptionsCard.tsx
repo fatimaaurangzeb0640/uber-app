@@ -14,7 +14,7 @@ const RideOptionsCard: FunctionComponent = () => {
     return(
       
             <View style={styles.container}>
-                <Text>Ride Options Card</Text>
+                <Text>Select a ride</Text>
             </View>
        
     )

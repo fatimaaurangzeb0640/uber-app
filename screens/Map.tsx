@@ -15,10 +15,10 @@ const MapScreen = () => {
     return(
         <SafeAreaView style={styles.container}>
             <View style={styles.half}>
-                <MapStack/>   
+                <MapComponent/>
             </View>
             <View style={styles.half}>
-                <MapComponent/>
+                <MapStack/>  
             </View>
         </SafeAreaView>
     )
@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        // margin: 15
       },
       half:{
         flex: 1

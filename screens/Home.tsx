@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
 import NavOptions from "../components/NavOptions";
+import NavFavorites from "../components/NavFavorites";
 
 import { RootStackParamList } from "../navigators/RootStack";
 import { StackScreenProps } from "@react-navigation/stack" 
@@ -27,9 +28,6 @@ const Home = () => {
                 <GooglePlacesAutocomplete
                     placeholder='Where from?'
                     onPress={(data, details = null) => {
-                        // 'details' is provided when fetchDetails = true
-                        // console.log(data);
-                        // console.log(details);
                         dispatch(setOrigin({
                             location: {
                                 lat: details?.geometry.location.lat,
@@ -62,8 +60,14 @@ const Home = () => {
                     // returnKeyType={"search"}
                    
                 />
+          </View>
+          <View  style={styles.optionsContainer}>
+                <NavOptions/>
             </View>
-            <NavOptions/>
+           
+            <View style={styles.favContainer}>
+                <NavFavorites/>
+            </View>      
         </SafeAreaView>
     )
 }
@@ -74,11 +78,23 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        // margin: 15
+       
       },
       logo:{
         width: 100,
         height: 100,
         resizeMode: "contain",
+      },
+
+      optionsContainer:{
+        flex: 1
+      },
+
+      favContainer:{
+        flex: 2
       }
+
+    
+   
+
 })
