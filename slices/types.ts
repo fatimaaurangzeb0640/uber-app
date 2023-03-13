@@ -1,7 +1,7 @@
 export interface navSliceStateType {
     origin: placeInfoType | null,
     destination: placeInfoType | null,
-    travelTimeInformation: string | null
+    travelTimeInformation: object | null
 }
 
 export interface placeInfoType {
