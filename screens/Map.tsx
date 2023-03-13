@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
+import React, {FunctionComponent} from "react";
+import { StyleSheet, View, SafeAreaView, TouchableOpacity } from "react-native";
 
 import { StackScreenProps } from "@react-navigation/stack" 
 import MapComponent from "../components/MapComponent";
@@ -7,13 +7,22 @@ import MapComponent from "../components/MapComponent";
 import MapStack from "../navigators/MapStack";
 import { MapStackParamList } from "../navigators/MapStack";
 
-// export type Props = StackScreenProps<RootStackParamList, "MapScreen">
-export type Props = StackScreenProps<MapStackParamList, "NavigateCard">
+import { Icon } from "react-native-elements";
 
-const MapScreen = () => {
+
+import { RootStackParamList } from "../navigators/RootStack";
+
+type Props = StackScreenProps<RootStackParamList, "MapScreen">
+
+const MapScreen: FunctionComponent<Props> = ({navigation}) => {
+    
+    
    
     return(
         <SafeAreaView style={styles.container}>
+            <TouchableOpacity style={styles.menuButton} onPress={()=> navigation.navigate("Home") }>
+                <Icon name="menu"/>
+            </TouchableOpacity>
             <View style={styles.half}>
                 <MapComponent/>
             </View>
@@ -33,6 +42,15 @@ const styles = StyleSheet.create({
       },
       half:{
         flex: 1
+      },
+      menuButton:{
+        position: "absolute",
+        backgroundColor: "white",
+        left: 0,
+        top: 40,
+        zIndex: 2,
+        borderRadius: 50,
+        padding: 15
       }
      
 })
