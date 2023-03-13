@@ -42,29 +42,6 @@ const MapComponent: FunctionComponent = () => {
             return;
         }
 
-        // fetch(`https://maps.googleapis.com/maps/api/distancematrix/json
-        //         ?destinations=${destination.description}
-        //         &origins=${origin.description}
-        //         &units=imperial
-        //         &key=${GOOGLE_MAPS_API_KEY}`
-        //     )
-        //     .then(function(response){
-        //         return response.json();
-        //       })
-        //       .then(function(data: any){
-        //         console.log(data)
-                
-        //         dispatch(setTravelTimeInformation(data?.rows[0]?.elements[0]))
-        //       })
-        //       .catch(function(error) {
-        //       console.log('There has been a problem with your fetch operation: ' + error);
-        //        // ADD THIS THROW error
-        //         throw error;
-        //       });
-
-            // .then((data: any)=>dispatch(setTravelTimeInformation(data.rows[0].elements[0])))
-
-            
 
             var config = {
             method: 'get',
@@ -74,8 +51,6 @@ const MapComponent: FunctionComponent = () => {
 
             axios(config)
             .then(function (response) {
-                console.log(response)
-            console.log(JSON.stringify(response.data));
             dispatch(setTravelTimeInformation(response.data?.rows[0]?.elements[0]))
             })
             .catch(function (error) {
